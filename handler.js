@@ -32,12 +32,12 @@ module.exports = {
                 if (typeof user !== 'object') db.data.users[m.sender] = {}
                 if (user) {
                     if (!isNumber(user.exp)) user.exp = 0
-                    if (!isNumber(user.limit)) user.limit = 1000
+                    if (!isNumber(user.limit)) user.limit = 10
                     if (!isNumber(user.joinlimit)) user.joinlimit = 1
-                    if (!isNumber(user.money)) user.money = 100000
-                    if (!isNumber(user.bank)) user.bank = 100000
+                    if (!isNumber(user.money)) user.money = 100
+                    if (!isNumber(user.bank)) user.bank = 100
                     if (!isNumber(user.lastclaim)) user.lastclaim = 0
-                    if (!('registered' in user)) user.registered = false
+                    if (!('registered' in user)) user.registered = true
                     if (!user.registered) {
                         if (!('name' in user)) user.name = m.name
                         if (!isNumber(user.age)) user.age = -1
@@ -284,12 +284,12 @@ module.exports = {
                     if (!isNumber(user.lastlatih)) user.lastlatih = 0
                 } else db.data.users[m.sender] = {
                     exp: 0,
-                    limit: 1000,
+                    limit: 10,
                     joinlimit: 1,
                     spammer: 0,
                     limitspam: 0,
-                    money: 10000,
-                    bank: 10000,
+                    money: 100,
+                    bank: 100,
                     health: 100,
                     tiketcoin: 0,
                     healtmonster: 100,
@@ -993,7 +993,7 @@ global.dfail = (type, m, conn) => {
         private: 'Perintah ini hanya dapat digunakan di Chat Pribadi!',
         admin: 'Perintah ini hanya untuk *Admin* grup!',
         botAdmin: 'Jadikan bot sebagai *Admin* untuk menggunakan perintah ini!',
-        unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama.umur*\n\nContoh: *#daftar Manusia.16*',
+        unreg: 'Silahkan daftar untuk menggunakan fitur ini dengan cara mengetik:\n\n*#daftar nama|umur*\n\nContoh: *#daftar Faiz|16*',
         restrict: 'Fitur ini di *disable*!'
     }[type]
     if (msg) return m.reply(msg)
